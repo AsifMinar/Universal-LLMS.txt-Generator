@@ -192,3 +192,58 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# ==========================================
+# LLMs.txt Generator Specific Files
+# ==========================================
+# User configuration files (contain sensitive data)
+llms_config.yaml
+config.yaml
+*.config.yaml
+
+# Generated cache files
+.llms_cache.json
+*.cache.json
+
+# Generated output files
+llms.txt
+generated_llms.txt
+
+# Backup files created by the generator
+*.backup
+sitemap.xml.backup
+robots.txt.backup
+
+# Test output directories
+test_output/
+test_data/
+temp_files/
+
+# Local development files
+local_config.yaml
+dev_config.yaml
+test_config.yaml
+
+# Generated content for testing
+sample_content/
+mock_data/
+
+# Webhook secrets and sensitive config
+.webhook_secret
+.secrets
+webhook_config.json
+
+# Platform-specific generated files
+public/llms.txt
+static/llms.txt
+dist/llms.txt
+_site/llms.txt
+
+# IDE and editor specific files for this project
+.vscode/settings.json
+.idea/workspace.xml
+
+# Log files specific to the generator
+llms_generator.log
+webhook.log
+cron.log

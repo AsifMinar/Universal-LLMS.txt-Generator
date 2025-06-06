@@ -1,0 +1,231 @@
+# Universal LLMs.txt Generator Configuration
+# Copy this file to llms_config.yaml and customize for your website
+# Last updated: 2025-06-06
+
+# ==========================================
+# Basic Website Information
+# ==========================================
+site_url: 'https://example.com'
+site_name: 'My Awesome Website'
+description: 'A comprehensive website providing valuable content for AI and language models'
+contact_email: 'contact@example.com'
+
+# ==========================================
+# Content Extraction Settings
+# ==========================================
+# Extractor types: wordpress, static, django, flask, sitemap
+extractor: 'sitemap'  # Change this based on your website type
+
+# ==========================================
+# Output Configuration
+# ==========================================
+output_path: './llms.txt'
+max_items: 1000              # Maximum number of content items to include
+min_word_count: 50           # Minimum word count for content items
+include_drafts: false        # Whether to include draft content
+
+# ==========================================
+# Auto-Update Settings
+# ==========================================
+auto_update: true            # Enable automatic updates
+auto_update_sitemap: true    # Automatically update sitemap.xml
+auto_update_robots: true     # Automatically update robots.txt
+backup_files: true           # Create backups before modifying files
+
+# ==========================================
+# Caching Configuration
+# ==========================================
+cache_file: '.llms_cache.json'
+cache_duration: 3600         # Cache duration in seconds (1 hour)
+
+# ==========================================
+# Content Filtering
+# ==========================================
+include_patterns: 
+  - '*.html'
+  - '*.md'
+  - '*.php'
+  - '*.aspx'
+
+exclude_patterns:
+  - 'admin/*'
+  - 'private/*'
+  - 'draft/*'
+  - 'wp-admin/*'
+  - 'wp-content/*'
+  - '*.css'
+  - '*.js'
+  - '*.xml'
+  - 'sitemap*'
+
+# ==========================================
+# WordPress Configuration
+# ==========================================
+wordpress:
+  api_url: 'auto'            # 'auto' to auto-detect, or custom URL
+  per_page: 100              # Number of posts to fetch per request
+  post_types:                # WordPress post types to include
+    - 'posts'
+    - 'pages'
+    # - 'products'           # Uncomment for WooCommerce
+    # - 'portfolio'          # Uncomment for portfolio sites
+  include_categories: []     # Specific categories to include (empty = all)
+  exclude_categories:        # Categories to exclude
+    - 'uncategorized'
+    - 'private'
+    - 'draft'
+  include_tags: []           # Specific tags to include (empty = all)
+  exclude_tags:              # Tags to exclude
+    - 'internal'
+    - 'private'
+
+# ==========================================
+# Static Site Configuration
+# ==========================================
+static:
+  content_directory: './content'    # Path to content directory
+  file_patterns:                    # File patterns to include
+    - '*.md'
+    - '*.html'
+    - '*.mdx'                       # For React/Gatsby
+    - '*.markdown'
+  front_matter: true                # Process YAML front matter
+  excerpt_length: 200               # Length of auto-generated excerpts
+  
+  # Hugo specific settings
+  hugo:
+    content_dir: './content'
+    static_dir: './static'
+    public_dir: './public'
+  
+  # Jekyll specific settings
+  jekyll:
+    posts_dir: './_posts'
+    pages_dir: './'
+    site_dir: './_site'
+  
+  # Gatsby/Next.js specific settings
+  gatsby:
+    content_dir: './content'
+    src_dir: './src'
+    public_dir: './public'
+
+# ==========================================
+# Django Configuration
+# ==========================================
+django:
+  models:                           # Django models to extract content from
+    - 'blog.Post'
+    - 'pages.Page'
+    - 'articles.Article'
+  url_field: 'get_absolute_url'     # Method to get URL
+  title_field: 'title'              # Field containing title
+  content_field: 'content'          # Field containing main content
+  excerpt_field: 'excerpt'          # Field containing excerpt (optional)
+  author_field: 'author'            # Field containing author (optional)
+  date_field: 'created_at'          # Field containing creation date
+  status_field: 'status'            # Field containing publish status
+  published_status: 'published'     # Value indicating published content
+
+# ==========================================
+# Flask Configuration
+# ==========================================
+flask:
+  # For Flask applications, typically use sitemap or static extraction
+  # Configure your Flask app to generate a sitemap.xml
+  sitemap_route: '/sitemap.xml'
+  
+# ==========================================
+# Advanced Sitemap Configuration
+# ==========================================
+sitemap:
+  url: 'auto'                       # 'auto' to auto-detect, or custom URL
+  follow_sitemap_index: true        # Follow sitemap index files
+  max_urls: 10000                   # Maximum URLs to process
+  timeout: 30                       # Request timeout in seconds
+  user_agent: 'LLMs.txt Generator'  # User agent for requests
+
+# ==========================================
+# Webhook Configuration
+# ==========================================
+webhook:
+  enabled: false                    # Enable webhook server
+  port: 8080                        # Port for webhook server
+  host: '0.0.0.0'                   # Host to bind to
+  secret: 'change-this-secret-key'  # Webhook secret for security
+  allowed_ips:                      # Allowed IP addresses
+    - '127.0.0.1'
+    - '::1'
+    # - '192.168.1.0/24'           # Uncomment for local network
+  ssl_cert: null                    # Path to SSL certificate (optional)
+  ssl_key: null                     # Path to SSL private key (optional)
+
+# ==========================================
+# Logging Configuration
+# ==========================================
+logging:
+  level: 'INFO'                     # Logging level: DEBUG, INFO, WARNING, ERROR
+  file: null                        # Log file path (null = console only)
+  format: '%(asctime)s - %(levelname)s - %(message)s'
+  max_size: 10485760               # Max log file size (10MB)
+  backup_count: 5                   # Number of backup log files
+
+# ==========================================
+# Performance Settings
+# ==========================================
+performance:
+  max_workers: 4                    # Number of worker threads
+  request_delay: 0.1                # Delay between requests (seconds)
+  retry_attempts: 3                 # Number of retry attempts
+  retry_delay: 1                    # Delay between retries (seconds)
+
+# ==========================================
+# Content Enhancement
+# ==========================================
+content:
+  auto_generate_descriptions: true   # Auto-generate descriptions if missing
+  extract_keywords: true            # Extract keywords from content
+  calculate_reading_time: true      # Calculate reading time
+  detect_language: true             # Detect content language
+  
+# ==========================================
+# Output Formatting
+# ==========================================
+output:
+  include_stats: true               # Include statistics in output
+  include_metadata: true            # Include metadata in headers
+  sort_by: 'last_modified'          # Sort order: title, date, last_modified
+  sort_order: 'desc'                # Sort direction: asc, desc
+  group_by_type: false              # Group content by type
+
+# ==========================================
+# Security Settings
+# ==========================================
+security:
+  sanitize_content: true            # Sanitize extracted content
+  max_file_size: 52428800          # Max file size to process (50MB)
+  allowed_domains: []               # Allowed domains for external links
+  blocked_patterns:                 # Patterns to exclude from content
+    - 'password'
+    - 'secret'
+    - 'api_key'
+    - 'private'
+
+# ==========================================
+# Integration Settings
+# ==========================================
+integrations:
+  google_analytics: null            # Google Analytics tracking ID
+  sentry_dsn: null                  # Sentry error tracking DSN
+  slack_webhook: null               # Slack notification webhook
+  discord_webhook: null             # Discord notification webhook
+
+# ==========================================
+# Custom Fields (for advanced users)
+# ==========================================
+custom:
+  # Add your custom configuration here
+  # This section is preserved during updates
+  custom_extractors: {}
+  custom_filters: {}
+  custom_transformers: {}
