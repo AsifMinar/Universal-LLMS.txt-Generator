@@ -9,7 +9,7 @@
 
 **A powerful, universal Python tool that automatically generates and maintains `llms.txt` files for ANY website, regardless of the technology stack.**
 
-[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-installation-methods) • [🤝 Contributing](#-contributing) • [💬 Support](#-support)
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-installation-methods) • [🤝 Contributing](#-contributing)
 
 </div>
 
