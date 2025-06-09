@@ -970,7 +970,7 @@ We welcome contributions from developers of all skill levels! Here's how you can
 ### Getting Started with Development
 ```bash
 # Fork and clone the repository
-git clone https://github.com/yourusername/Universal-LLMS.txt-Generator.git
+git clone https://github.com/AsifMinar/Universal-LLMS.txt-Generator.git
 cd Universal-LLMS.txt-Generator
 
 # Create virtual environment
